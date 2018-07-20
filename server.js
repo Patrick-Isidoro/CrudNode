@@ -6,7 +6,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 const ObjectID = require('mongodb').ObjectID
 const MongoClient = require('mongodb').MongoClient
-const uri = "mongodb://patrickisidoro:nuzor1539@ds133279.mlab.com:33279/crud-nodejs";
+const uri = "";
 
 MongoClient.connect(uri, (err, client) => {
     if (err) return console.log(err)
