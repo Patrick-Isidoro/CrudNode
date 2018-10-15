@@ -1,8 +1,9 @@
 {
-    "name": "crud",
+    "name": "CrudNode",
     "version": "1.0.0",
-    "description": "crud básico em node",
     "main": "server.js",
+    "description": "crud básico em node",
+    "private": true,
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "nodemon server.js"
@@ -13,9 +14,9 @@
         "body-parser": "^1.18.3",
         "ejs": "^2.6.1",
         "express": "^4.16.3",
-        "mongodb": "^3.0.10"
+        "mongodb": "^3.1.7"
     },
     "devDependencies": {
-        "nodemon": "^1.17.5"
+        "nodemon": "^1.18.4"
     }
 }

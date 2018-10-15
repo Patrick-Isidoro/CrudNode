@@ -1,0 +1,19 @@
+falta update
+update não está ok
+precisa melhorar os templates
+
+fazer uma continuação implementando o front
+
+tentar fazer um projeto completo
+da ideia até o deploy
+
+fazer um projeto open source com Ruby
+usar a ideia do projeto da NT Coding
+fazer um controle de estoque com Rails
+
+Integrar Front e Back
+React e Ruby
+Posterior complementar alguns micro services com Go
+
+tentar usar bootstrap, react fa-icons
+o máximo de tecnologias diferentes porém sem atrapalhar a funcionalidade

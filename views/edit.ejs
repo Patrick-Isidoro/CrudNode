@@ -6,13 +6,14 @@
 </head>
 <body>
 
-<h2>Editar Registro<h2>
-
-    <form action="/show" method="POST">
-        <input type="text" placeholder="Nome" name="name">
-        <input type="text" placeholder="Sobrenome" name="surname">
-        <button type="submit">Submit</button>
-    </form> 
+<h2>Editar Registro</h2>
+  <% data.forEach(function(details) { %>
+    <form action="/edit/<%= details._id %>" method="POST">
+      <input type="text" value="<%= details.name %>" name="name">
+      <input type="text" value="<%= details.surname %>" name="surname">
+      <button type="submit">Submit</button>
+    </form>
+  <% }) %>
 
 </body>
 </html>
