@@ -50,15 +50,14 @@ app.route('/edit/:id')
   db.collection('data').find(ObjectId(id)).toArray((err, result) => {
     if (err) return res.send(err)
     res.render('edit.ejs', { data: result })
-    // console.log(ObjectId(id))
   })
 })
-.put((req, res) => {
+.post((req, res) => {
   var id = req.params.id
   var name = req.body.name
   var surname = req.body.surname
 
-  db.collection('data').findOneAndUpdate(ObjectId(id), {
+  db.collection('data').updateOne({_id: ObjectId(id)}, {
     $set: {
       name: name,
       surname: surname
@@ -66,7 +65,6 @@ app.route('/edit/:id')
   }, (err, result) => {
     if (err) return res.send(err)
     res.redirect('/show')
-    console.log(name)
     console.log('Atualizado no Banco de Dados')
   })
 })
@@ -75,7 +73,7 @@ app.route('/delete/:id')
 .get((req, res) => {
   var id = req.params.id
 
-  db.collection('data').findOneAndDelete(ObjectId(id), (err, result) => {
+  db.collection('data').deleteOne({_id: ObjectId(id)}, (err, result) => {
     if (err) return res.send(500, err)
     console.log('Deletado do Banco de Dados!')
     res.redirect('/show')
