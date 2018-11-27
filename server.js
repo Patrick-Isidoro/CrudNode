@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 
 const ObjectId = require('mongodb').ObjectID
 const MongoClient = require('mongodb').MongoClient
-const uri = "mongodb://<dbuser>:<dbpassword>@ds133279.mlab.com:33279/crud-nodejs";
+const uri = "mongodb://patrickisidoro:nuzor1539@ds133279.mlab.com:33279/crud-nodejs";
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
