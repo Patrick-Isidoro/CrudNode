@@ -1,8 +1,10 @@
-![nodemon logo](https://user-images.githubusercontent.com/13700/35731649-652807e8-080e-11e8-88fd-1b2f6d553b2d.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/13700/35731649-652807e8-080e-11e8-88fd-1b2f6d553b2d.png" alt="Nodemon Logo">
+</p>
 
 # nodemon
 
-nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected. 
+nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
 
 nodemon does **not** require *any* additional changes to your code or method of development. nodemon is a replacement wrapper for `node`, to use `nodemon` replace the word `node` on the command line when executing your script.
 
@@ -248,6 +250,38 @@ nodemon --delay 2.5
 
 {
   "delay": "2500"
+}
+```
+
+## Gracefully reloading down your script
+
+It is possible to have nodemon send any signal that you specify to your application.
+
+```bash
+nodemon --signal SIGHUP server.js
+```
+
+Your application can handle the signal as follows.
+
+```js
+process.once("SIGHUP", function () {
+  reloadSomeConfiguration();
+})
+```
+
+Please note that nodemon will send this signal to every process in the process tree.
+
+If you are using `cluster`, then each workers (as well as the master) will receive the signal. If you wish to terminate all workers on receiving a `SIGHUP`, a common pattern is to catch the `SIGHUP` in the master, and forward `SIGTERM` to all workers, while ensuring that all workers ignore `SIGHUP`.
+
+```js
+if (cluster.isMaster) {
+  process.on("SIGHUP", function () {
+    for (const worker of Object.values(cluster.workers)) {
+      worker.process.kill("SIGTERM");
+    }
+  });
+} else {
+  process.on("SIGHUP", function() {})
 }
 ```
 
